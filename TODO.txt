@@ -1,10 +1,13 @@
 # Coders Blog
 
+~~~~~~~~~~~~~~~~~~~~~ Create Project Section ~~~~~~~~~~~~~~~~~~~~~~
 Step - 1:
     * Create a repo and clone.
     * Create django-project using same name(repo-name)
         $ django-admin startproject codersblog
     * Add, commit and push it.
+
+~~~~~~~~~~~~~~~~~~~~~ Create Application Section ~~~~~~~~~~~~~~~~~~~~~~
 
 Step - 2:
     * Create an app(name: blog)
@@ -12,22 +15,30 @@ Step - 2:
     * Add apps in codersblog/settings.py file in 'INSTALL_APPS' section.
     * Add, commit and push it.
 
+~~~~~~~~~~~~~~~~~~~~~ Migration Section ~~~~~~~~~~~~~~~~~~~~~~
+
 Step - 3:
     * Make migration
         $ python manage.py makemigration
         $ python manage.py migrate
 
+~~~~~~~~~~~~~~~~~~~~~ Template Section ~~~~~~~~~~~~~~~~~~~~~~
+
+$$$$$$$$$$$$$$ Merge Step-4 and Step-5 $$$$$$$$$$$$$$$$####
+
 Step - 4:
     * Create a simple view.
+        Here we create two main view -> (index view(for landign page, tutorial view for tutorial page))it.
+        Next we add more and more views for our purpose.
     * Create urls.py file in blog app
         $ touch urls.py
     * Mapping blog app views and urls.py
     * Then mapping codersblog/urls.py to blog/urls.py
 
-~~~~~~~~~~~~~~~ Complete above section ~~~~~~~~~~~~~~~~~~~
-
 Step - 5:
     * Create a template directory and mapping with views, urls and template directory.
+
+@@@@@@@@@@@@@@@@@@@@@@ Complete above section @@@@@@@@@@@@@@@@@@@@
 
 Step - 6:
     * Create Model(here we create one model for one complete tutorial, like PyDB, JsDB, JavaDB, CppDB)
