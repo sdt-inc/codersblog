@@ -1,9 +1,14 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
 
 {% if index %}
 <h1>{{ index }}</h1>
 {% endif %}
+
+<p>Image File</p>
+<br>
+<img style="width: 300px; height:200px;" src="{% static 'blog/img/light.jpg' %}" alt="">
 
 {% endblock content %}
