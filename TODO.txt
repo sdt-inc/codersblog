@@ -1,0 +1,33 @@
+# Coders Blog
+
+Step - 1:
+    * Create a repo and clone.
+    * Create django-project using same name(repo-name)
+        $ django-admin startproject codersblog
+    * Add, commit and push it.
+
+Step - 2:
+    * Create an app(name: blog)
+        $ python manage.py startapp blog
+    * Add apps in codersblog/settings.py file in 'INSTALL_APPS' section.
+    * Add, commit and push it.
+
+Step - 3:
+    * Make migration
+        $ python manage.py makemigration
+        $ python manage.py migrate
+
+Step - 4:
+    * Create a simple view.
+    * Create urls.py file in blog app
+        $ touch urls.py
+    * Mapping blog app views and urls.py
+    * Then mapping codersblog/urls.py to blog/urls.py
+
+~~~~~~~~~~~~~~~ Complete above section ~~~~~~~~~~~~~~~~~~~
+
+Step - 5:
+    * Create a template directory and mapping with views, urls and template directory.
+
+Step - 6:
+    * Create Model(here we create one model for one complete tutorial, like PyDB, JsDB, JavaDB, CppDB)
