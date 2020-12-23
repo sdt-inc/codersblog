@@ -2,7 +2,16 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'blog/index.html', context={'index': "Index Page"})
+    context = {
+        'title': 'Index Page',
+        'body': "Index body text",
+    }
+    return render(request, 'blog/index.html', context=context)
+
 
 def tutorial(request):
-    return render(request, 'blog/tutorial.html', context={'tutorial' : 'Tutorial Page'})
+    context = {
+        'title': 'Tutorial Page',
+        'body': "Tutorial body text",
+    }
+    return render(request, 'blog/tutorial.html', context=context)
