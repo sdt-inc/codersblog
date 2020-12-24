@@ -100,7 +100,8 @@
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action bg-light">Table of Contents</a>
                 {% for post in object_list %}
-                    <a href="{% url 'tutorial' pk=post.pk %}" class="list-group-item list-group-item-action bg-light"> {{ post }} </a>
+                <a href="{% url 'tutorial' pk=post.pk %}" class="list-group-item list-group-item-action bg-light"> {{
+                    post }} </a>
                 {% endfor %}
             </div>
         </div>
@@ -133,24 +134,53 @@
     <!-- Related Link Section -->
     <!-- Footer Section -->
     <!-- Footer -->
-    <div class="row">
-        <div class="card mx-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-                You can put anything you want inside of these side widgets. They are easy to use, and feature the new
-                Bootstrap
-                4 card containers!
+    <div class="d-flex container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Info card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Info card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Info card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Info card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-                You can put anything you want inside of these side widgets. They are easy to use, and feature the new
-                Bootstrap
-                4 card containers!
-            </div>
-        </div>
-
     </div>
 
     <footer class="py-3 bg-dark footer">
