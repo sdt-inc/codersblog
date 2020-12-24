@@ -146,49 +146,15 @@
     <!-- Related Link Section -->
     <!-- Footer Section -->
     <!-- Footer -->
-    <div class="d-flex container-fluid">
-        <div class="row justify-content-center">
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Info card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Info card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Info card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Info card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
+                        <h5 class="card-title">{{ title }}</h5>
+                        <p class="card-text">{{ description }}</p>
+                        <a href="{% url 'index' %}" class="btn btn-primary">Goto the page</a>
+
                     </div>
                 </div>
             </div>
@@ -210,8 +176,15 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+        // hljs.initHighlightingOnLoad();
     </script>
 
+    <!-- ckeditor perspective -->
+    <link rel="stylesheet"
+        href="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css' %}" />
+    <script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}"></script>
+
+    <!-- responsive bootstrap4 -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

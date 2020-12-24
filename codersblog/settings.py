@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'ckeditor',
+    'ckeditor_uploader',  # new for ckeditor snippets features and others
     'multiselectfield',
 ]
 
@@ -121,3 +122,98 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
+# new settings for ckeditor
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
+
+# ckeditor config
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar_MyCustomToolbar': [
+            {'name': 'basic', 'items': [
+                'Source',
+                '-',
+                'Bold',
+                'Italic',
+                'CodeSnippet'  # add the codesnippet button name
+            ]}
+        ],
+        # https://github.com/django-ckeditor/django-ckeditor/tree/master/ckeditor/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles
+        # https://github.com/isagalaev/highlight.js/tree/master/src/styles
+        'codeSnippet_theme': 'railscasts',
+        # uncomment to restrict only those languages
+        # 'codeSnippet_languages': {
+        #     'python': 'Python Guru',
+        #     'javascript': 'JavaScript Fu',
+        #     'php': 'PHP Ninja',
+        #     'c': 'You custom funny language name'
+        # },
+        'toolbar': 'MyCustomToolbar',
+        'extraPlugins': ','.join(
+            [
+                # add the follow plugins
+                'codesnippet',
+                'widget',
+                'dialog',
+            ]),
+    },
+    'awesome_ckeditor': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Link', 'Unlink', 'Anchor', '-', 'Styles', 'Format', 'Font', 'FontSize', ' -',
+             'Image']
+        ]
+    },
+    'special':
+        {
+            'toolbar': 'Special', 'height': 500,
+            'toolbar_Special':
+            [
+                {'name': 'document', 'items': [
+                    'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+                {'name': 'clipboard', 'items': [
+                    'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+                {'name': 'editing', 'items': [
+                    'Find', 'Replace', '-', 'SelectAll']},
+                {'name': 'forms',
+                 'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                           'HiddenField']},
+                '/',
+                {'name': 'basicstyles',
+                 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+                {'name': 'paragraph',
+                 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                           'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+                           'Language']},
+                {'name': 'links', 'items': [
+                    'Link', 'Unlink', 'Anchor']},
+                {'name': 'insert',
+                 'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+                '/',
+                {'name': 'styles', 'items': [
+                    'Styles', 'Format', 'Font', 'FontSize']},
+                {'name': 'colors', 'items': [
+                    'TextColor', 'BGColor']},
+                {'name': 'tools', 'items': [
+                    'Maximize', 'ShowBlocks']},
+                {'name': 'about', 'items': ['About']},
+                {'name': 'yourcustomtools', 'items': [
+                    # put the name of your editor.ui.addButton here
+                    'Preview',
+                    'Maximize',
+                ]},
+
+                ['CodeSnippet'],  # here
+            ], 'extraPlugins': 'codesnippet',  # here
+    }
+}
+
+##### if needed uncomment it ########
+
+# CKEDITOR_IMAGE_BACKEND = 'pillow'
+# CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'

@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 from . choice import keyword_choices, writer_choices
 # from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class PythonDB(models.Model):
@@ -21,7 +22,8 @@ class PythonDB(models.Model):
         choices=writer_choices, max_choices=3)
 
     date = models.DateField(auto_now=timezone.now())
-    body = RichTextField(blank=True, null=True)
+    # body = RichTextField(blank=True, null=True)
+    body = RichTextUploadingField(config_name='default', blank=True, null=True)
     related_page_link = models.CharField(max_length=200)
 
     # slug
