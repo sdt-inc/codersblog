@@ -1,25 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from multiselectfield import MultiSelectField
+from . choice import keyword_choices,writer_choices
 
 # from taggit.managers import TaggableManager
 
 from ckeditor.fields import RichTextField
 
-keyword_choices = (
-    ('py', 'Python'),
-    ('js', 'JavaScript'),
-    ('css', 'CSS'),
-    ('html', 'HTML'),
-    ('dj', 'Django'),
-    ('db', 'Database')
-)
-
-
-writer_choices = (
-    ('NH', 'Md. Nahid Hassan'),
-    ('MN', 'Md. Mehedi Hasan')
-)
 
 
 class PythonDB(models.Model):
