@@ -69,6 +69,7 @@
                         Tutorials
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'tutorial' pk=1 %}">Python</a>
                         <a class="dropdown-item" href="#">Django</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">DSA</a>
@@ -80,7 +81,7 @@
                         Blog
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'blog_list' %}">Blog List</a>
+                        <a class="dropdown-item" href="#">Blog List</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">DSA</a>
                     </div>
@@ -96,13 +97,24 @@
 
     <div class="d-flex menu-toggle" data-toggle="collapse">
         <!-- Sidebar -->
+
         <div class="bg-light border-right side-nav" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action bg-light">Table of Contents</a>
+                {% if request.path == '/' %}
                 {% for post in object_list %}
                 <a href="{% url 'tutorial' pk=post.pk %}" class="list-group-item list-group-item-action bg-light"> {{
                     post }} </a>
                 {% endfor %}
+                {% endif %}
+
+                {% if current_url == 'tutorial' %}
+                {% for key, value in test_title_id.items %}
+                <a href="{% url 'tutorial' pk=value %}" class="list-group-item list-group-item-action bg-light">
+                    {{ key }}
+                </a>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
