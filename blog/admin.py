@@ -1,4 +1,10 @@
 from django.contrib import admin
+from django.db.models import fields
 from . import models
+from .models import *
 # Register your models here.
-admin.site.register(models.PythonDB)
+class PythonDB(models.Model):
+    class Meta:
+        fields = '__all__'
+
+admin.site.register(PythonDB,PythonDB)
