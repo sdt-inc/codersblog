@@ -7,12 +7,12 @@ from multiselectfield import MultiSelectField
 from ckeditor.fields import RichTextField
 
 keyword_choices = (
-    ('py', 'Python'),
-    ('js', 'JavaScript'),
-    ('css', 'CSS'),
-    ('html', 'HTML'),
-    ('dj', 'Django'),
-    ('db', 'Database')
+    ('Python3', 'Python'),
+    ('JavaScript', 'JavaScript'),
+    ('CSS', 'CSS'),
+    ('HTML', 'HTML'),
+    ('Django', 'Django'),
+    ('Database', 'Database')
 )
 
 
