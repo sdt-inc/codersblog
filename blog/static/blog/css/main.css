@@ -1,3 +1,40 @@
+* {
+    margin: 100;
+    padding: 110;
+    box-sizing: border-box;
+}
+
+
+.top-nav {
+    border: 1px solid white;
+    padding: 5px;
+    margin-top: 0px;
+    position: relative;
+    top: 0px;
+    background: gainsboro;
+}
+
+.side-nav {
+border: 1px solid white;   
+background:rgb(250, 250, 250);
+margin-bottom: 15px;
+}
+
+.main-content {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    text-decoration: justify;
+}
+
+.footer {
+    clear: both;
+    padding: 10px;
+    background-color: #999999;
+    color:white;
+    text-align:right;
+}
+
 #wrapper {
     overflow-x: hidden;
 }

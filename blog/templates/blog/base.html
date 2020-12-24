@@ -5,9 +5,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
     <!-- all this meta information are use from database -->
     {% if description %}
     <meta name='description' content="{{ description }}">
@@ -52,7 +50,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light top-nav">
         <a class="navbar-brand" href="{% url 'index' %}">
             <img src="{% static 'blog/img/logo-coder-school.png' %}" width="30" height="30"
                 class="d-inline-block align-top" alt="">
@@ -71,7 +69,6 @@
                         Tutorials
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'tutorial'%}">Python</a>
                         <a class="dropdown-item" href="#">Django</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">DSA</a>
@@ -83,8 +80,7 @@
                         Blog
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'tutorial'%}">Python</a>
-                        <a class="dropdown-item" href="#">Django</a>
+                        <a class="dropdown-item" href="{% url 'blog_list' %}">Blog List</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">DSA</a>
                     </div>
@@ -100,19 +96,33 @@
 
     <div class="d-flex menu-toggle" data-toggle="collapse">
         <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="bg-light border-right side-nav" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Table of Contents</a>
+                {% for post in object_list %}
+                    <a href="{% url 'tutorial' pk=post.pk %}" class="list-group-item list-group-item-action bg-light"> {{ post }} </a>
+                {% endfor %}
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
-        <div class="container">
-            <div id="page-content-wrapper">
+        <!-- main content section -->
+        <div class="container main-content" data-progress-indicator>
+            <!-- header section -->
+            {% if title %}
+            <h2 class="mt-4"> {{ title }} </h2>
+            {% endif %}
+            <!-- Author -->
+
+            {% if writer_name %}
+            <article>
+                <address>
+                    by
+                    <a href="#">{{ writer_name }}</a>. Posted on {{ date }}
+                </address>
+            </article>
+            {% endif %}
+            <div id="page-content-wrapper text-center">
+                <hr>
                 {% block content %}
 
                 {% endblock content %}
@@ -120,12 +130,9 @@
         </div>
 
     </div>
-
     <!-- Related Link Section -->
-    Create Card
     <!-- Footer Section -->
     <!-- Footer -->
-
     <div class="row">
         <div class="card mx-4">
             <h5 class="card-header">Side Widget</h5>
@@ -146,11 +153,10 @@
 
     </div>
 
-    <footer class="py-3 bg-dark">
+    <footer class="py-3 bg-dark footer">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Coders Blog {{ date.year }}</p>
         </div>
-        <!-- /.container -->
     </footer>
 
     <!-- Optional JavaScript -->
@@ -162,6 +168,25 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+        (function (window, document) {
+            navigator.share && document.addEventListener('DOMContentLoaded', () => {
+                const share = document.querySelector('[data-share]');
+                share.style.display = 'inherit';
+                share.addEventListener('click', e => {
+                    e.preventDefault();
+                    navigator.share({
+                        title: share.getAttribute('data-share'),
+                        url: share.getAttribute('data-share-url'),
+                    }).then(() => console.info('shared!'));
+                });
+            });
+            [].forEach.call(document.querySelectorAll('.share-icons a[title]'), link => {
+                link.addEventListener('click', () => {
+                    ga('send', 'social', link.title, 'share', window.location.href);
+                    ga('send', 'event', 'share', link.title, window.location.href, 1);
+                });
+            });
+        })(window, document);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

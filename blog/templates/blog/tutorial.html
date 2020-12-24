@@ -3,11 +3,7 @@
 {% block content %}
 
 {% if body %}
-<h1>{{ body }}</h1>
+{{ body | safe}}
 {% endif %}
-
-<script>
-    alarm();
-</script>
 
 {% endblock content %}
