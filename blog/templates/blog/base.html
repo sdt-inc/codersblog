@@ -98,7 +98,7 @@
     <div class="d-flex menu-toggle" data-toggle="collapse">
         <!-- Sidebar -->
 
-        <div class="bg-light border-right side-nav" id="sidebar-wrapper">
+        <div class="bg-light border-left side-nav" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action bg-light">Table of Contents</a>
                 {% if request.path == '/' %}
@@ -109,7 +109,7 @@
                 {% endif %}
 
                 {% if current_url == 'tutorial' %}
-                {% for key, value in test_title_id.items %}
+                {% for key, value in title_primary_keys.items %}
                 <a href="{% url 'tutorial' pk=value %}" class="list-group-item list-group-item-action bg-light">
                     {{ key }}
                 </a>
