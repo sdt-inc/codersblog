@@ -9,7 +9,7 @@ def index(request):
     # test_data = PythonDB.objects.values_list('title')
     # print(test_data)
 
-    data = PythonDB.objects.all()[2]
+    data = PythonDB.objects.all()[1]
     context = {
         'description': str(data.description),
         'keywords': list(data.keywords),
@@ -62,3 +62,11 @@ def view_404(request, exception):
         # create and context and check the result
 
     return render(request, 'blog/404.html')
+
+
+def search(request):
+    query = request.GET['query']
+    data = PythonDB.objects.filter(title__icontains=query)
+
+    return render(request,'blog/search.html',{'data':data})
+    

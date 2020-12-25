@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qfv(w2y3j#ax-!@x(k!7&2#$uu!c%n)kn@h5+mbr4iwaj2ys8)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-if DEBUG is False:
+if DEBUG == False:
     ALLOWED_HOSTS = [
         '127.0.0.1:8000',
         '*',
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'codersblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 

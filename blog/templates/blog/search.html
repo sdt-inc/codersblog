@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+{% for search in data %}
+
+    <h1>Title {{search.title }}
+    </h1>    
+    Body : {{search.body | safe }}
+    Author : {{ search.author }}
+    <br><br><br><br><br><br>
+{% endfor %}
+
+{% endblock content %}
