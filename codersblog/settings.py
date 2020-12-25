@@ -23,13 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qfv(w2y3j#ax-!@x(k!7&2#$uu!c%n)kn@h5+mbr4iwaj2ys8)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+if DEBUG is False:
+    ALLOWED_HOSTS = [
+        '127.0.0.1:8000',
+        '*',
+    ]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -139,27 +141,9 @@ CKEDITOR_CONFIGS = {
                 '-',
                 'Bold',
                 'Italic',
-                'CodeSnippet'  # add the codesnippet button name
+                'CodeSnippet'
             ]}
         ],
-        # https://github.com/django-ckeditor/django-ckeditor/tree/master/ckeditor/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles
-        # https://github.com/isagalaev/highlight.js/tree/master/src/styles
-        'codeSnippet_theme': 'railscasts',
-        # uncomment to restrict only those languages
-        # 'codeSnippet_languages': {
-        #     'python': 'Python Guru',
-        #     'javascript': 'JavaScript Fu',
-        #     'php': 'PHP Ninja',
-        #     'c': 'You custom funny language name'
-        # },
-        'toolbar': 'MyCustomToolbar',
-        'extraPlugins': ','.join(
-            [
-                # add the follow plugins
-                'codesnippet',
-                'widget',
-                'dialog',
-            ]),
     },
     'awesome_ckeditor': {
         'toolbar': 'Custom',
@@ -207,8 +191,8 @@ CKEDITOR_CONFIGS = {
                     'Maximize',
                 ]},
 
-                ['CodeSnippet'],  # here
-            ], 'extraPlugins': 'codesnippet',  # here
+                ['CodeSnippet'],  # codesnippets
+            ], 'extraPlugins': 'codesnippet',
     }
 }
 
