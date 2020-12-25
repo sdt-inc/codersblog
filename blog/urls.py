@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('python/<int:pk>/', views.tutorial, name='tutorial'),
+    path('search',views.search,name='search')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # for serving ckeditor js files
