@@ -433,7 +433,7 @@
 }
 
 .bd-sidenav {
-    display: none
+    display: block;
 }
 
 .bd-toc-link {

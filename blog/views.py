@@ -33,10 +33,10 @@ def tutorial(request, pk=None):
 
     # return all the title from PythonDB database
     # flat true return the results as single values, rather than one-tuples.
-    test_title = list(PythonDB.objects.values_list('title', flat=True))
-    test_id = list(PythonDB.objects.values_list('id', flat=True))
+    titles = list(PythonDB.objects.values_list('title', flat=True))
+    primary_keys = list(PythonDB.objects.values_list('id', flat=True))
 
-    test_title_id = dict(zip(test_title, test_id))
+    title_primary_keys = dict(zip(titles, primary_keys))
 
     context = {
         'description': data.description,
@@ -47,12 +47,12 @@ def tutorial(request, pk=None):
         'date': data.date,
         'body': data.body,
         'related_page_link': data.related_page_link,
-        'test_title_id': test_title_id,
+        'title_primary_keys': title_primary_keys,
         'current_url': current_url,
     }
     # print(request.path)
     # print(context.get('test_title_id'))
-    # print(context.get('current_url'))
+    print(context.get('current_url'))
     return render(request, 'blog/tutorial.html', context=context)
 
 
@@ -68,5 +68,4 @@ def search(request):
     query = request.GET['query']
     data = PythonDB.objects.filter(title__icontains=query)
 
-    return render(request,'blog/search.html',{'data':data})
-    
+    return render(request, 'blog/search.html', {'data': data})
