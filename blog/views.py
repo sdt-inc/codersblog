@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from .models import PythonDB
-from django.views.generic import ListView
+from django.shortcuts import get_object_or_404, render
 from django.urls import resolve
+from django.views.generic import ListView
+
+from .models import PythonDB
 
 
 def index(request):

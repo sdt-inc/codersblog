@@ -1,11 +1,12 @@
-from django.db import models
-from django.utils import timezone
-from multiselectfield import MultiSelectField
-from django.shortcuts import reverse
-from . choice import keyword_choices, writer_choices
 # from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.db import models
+from django.shortcuts import reverse
+from django.utils import timezone
+from multiselectfield import MultiSelectField
+
+from .choice import keyword_choices, writer_choices
 
 
 class PythonDB(models.Model):

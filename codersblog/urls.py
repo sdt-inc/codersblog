@@ -1,10 +1,10 @@
-from django.contrib import admin
-from django.urls import path, include
-from blog import views
-from django.conf.urls import handler404
 from django.conf import settings
+from django.conf.urls import handler404
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
 
+from blog import views
 
 # 404 page handler config
 # handler404 = "app_name.views.function_name"
