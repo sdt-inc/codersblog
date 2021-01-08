@@ -4,6 +4,10 @@
     background: transparent;
 }
 
+pre>code {
+    font-family: "Lucida Console";
+    font-size: 20px;
+}
 
 .bd-navbar {
     min-height: 1rem;
