@@ -68,4 +68,5 @@ if __name__ == "__main__":
             print(codeblock(code, language))
 
         if lines[idx] is not None:
+            print(lines[idx])
             idx += 1
