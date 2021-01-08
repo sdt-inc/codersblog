@@ -1,6 +1,3 @@
-import bootstrap3
-
-
 class TextFormation:
     headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
     display_headings = ['display-1', 'display-3',
@@ -36,3 +33,10 @@ class TextFormation:
 
 class BackGround:
     pass
+
+
+class Language:
+    py = 'python'
+    html = 'html'
+    js = 'javascript'
+    java = 'java'

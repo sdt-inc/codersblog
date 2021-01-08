@@ -1,0 +1,7 @@
+1. put a single line before start blockcode
+Ex:
+```py
+
+def hello():
+    print('Hello')
+```
