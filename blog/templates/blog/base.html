@@ -1,204 +1,126 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
-    <!-- all this meta information are use from database -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
     {% if description %}
-    <meta name='description' content="{{ description }}">
+    <meta name="description" content="{{ description }}" />
     {% endif %}
-
-    {% if keywords %}
-    <meta name='keywords' content="{{ keywords }}">
-    {% endif %}
-
-    {% if author %}
-    <meta name='author' content="{{ keywords }}">
-    {% else %}
-    <meta name='author' content="https://www.codersblog.com">
-    {% endif %}
-
-    {% if title %}
-    <meta property="og:title" content="{{ title }}">
-    {% endif %}
-    {% if description %}
-    <meta property="og:description" content="{{ description }}">
-    {% endif %}
-    <meta property="og:type" content="article">
-    {% if content_url %}
-    <meta property="og:url" content="{{ content_url }}">
-    {% endif %}
-    <!-- end all meta -->
-
-    <!-- favicon ico-->
-    <link rel="shortcut icon" type="image/png" href="{% static 'blog/img/favicon.svg' %}" />
-
-    <!-- add jquery ui link for search auto complete -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- static css -->
-    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
 
     {% if title %}
     <title>{{ title }}</title>
     {% else %}
-    <title>Coders School</title>
+    <title>DevCoders</title>
     {% endif %}
 
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-146052-10', 'getbootstrap.com');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
-    </script>
 
-    <!-- custom css -->
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <!-- bootstrap4 and bootstrap5 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+
+    <!-- code highlight highlight js stylesheet -->
+    <link rel="stylesheet" href="{% static 'blog/css/highlight/styles/atom-one-light.css' %}" />
+
+    <!-- syntax highlight highlight js script -->
+    <script src="{% static 'blog/css/highlight/highlight.pack.js' %}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 <body>
-    <!-- start of notification -->
-    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
-        <div class="container">
-            <span class="skiplink-text">Skip to main content</span>
-        </div>
-    </a>
-
-    <a href="#" class="d-block px-3 py-2 text-center text-bold text-white old-bv">
-        Upcoming Machine Learning Project
-    </a>
-    <!-- end of notification -->
-
-    <!-- start of top nav -->
-    <header class="navbar navbar-expand navbar-dark flex-column sticky-top flex-md-row bd-navbar">
-        <a class="navbar-brand mr-0 mr-md-2" href="{% url 'index' %}" aria-label="DevCoder">
-            <svg class="d-block" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    <rect x="0" y="0" width="36" rx="8" height="36"
-                        style="fill:rgb(86, 61, 124);stroke-width:1;stroke:rgba(250, 250, 250, .8)">
-                    </rect>
-                    <text x="4" y="26" font-family="helvetica" font-size="20" font-weight="bold" fill="white">DC</text>
-                </g>
-                <title>DevCoder</title>
-            </svg>
-        </a>
-
+    <!-- Header Section Start -->
+    <header class="navbar navbar-expand navbar-light flex-column sticky-top flex-md-row bd-navbar shadow rounded">
         <div class="navbar-nav navbar-expand-lg">
-            <ul class="navbar-nav bd-navbar-nav flex-row">
+            <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'blogs');">
-                        Blogs
-                    </a>
+                    <a class="nav-item nav-link" href="/">DC Blog</a>
                 </li>
-                <li class="nav-item dropdown active">
-                    <a class="nav-item nav-link dropdown-toggle mr-md-2" href="{% url 'index' %}" id="bd-versions"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        onclick="ga('send', 'event', 'Navbar', 'Community links', 'blogs');">
-                        Tutorials
+                <li class="nav-item dropdown">
+                    <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tutorials
                     </a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="bd-versions">
-                        <a class="dropdown-item active" href="{% url 'tutorial' pk=1 %}">Python</a>
-                        <a class="dropdown-item" href="#">DSA</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Django</a>
-                        <a class="dropdown-item" href="#">C++</a>
-                        <a class="dropdown-item" href="#">Security</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'tutorial' pk=1 %}"> Python</a>
+                        <a class="dropdown-item" href="#"> DSA</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="#"> Django</a>
+                        <a class="dropdown-item" href="#"> C++</a>
+                        <a class="dropdown-item" href="#"> Security</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#"
-                        onclick="ga('send', 'event', 'Navbar', 'Community links', 'Machine Learning');">ML</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"
-                        onclick="ga('send', 'event', 'Navbar', 'Community links', 'Deep Learning');" target="_blank"
-                        rel="noopener">DL</a>
+                    <a class="nav-link" href="#">DL</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Projects');"
-                        target="_blank" rel="noopener">Projects</a>
-                </li>
+                    <a class="nav-link" href="#" target="_blank">ML Projects</a>
                 </li>
             </ul>
         </div>
 
-
         <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
-            <form class="bd-search form-inline my-2 my-lg-0" method="GET" action="search">
-                <input type="search" class="form-control" id="search-input" placeholder="Search..."
-                    aria-label="Search for..." autocomplete="off" name="query">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
+            <form class="form-inline my-2 my-lg-0" method="GET" action="search">
+                <input type="search" class="form-control" id="search-input" placeholder="Search Blog..."
+                    aria-label="Search for..." autocomplete="off" name="query" />
             </form>
-            <!-- <form class="bd-search text-center flex" method="GET" action="search">
-               
         </ul>
 
-        <!-- <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" -->
-            <!-- href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a> -->
+        <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+            <li class="nav-item">
+                <a class="nav-link" href="#" target="_blank">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" target="_blank">Login</a>
+            </li>
+        </ul>
     </header>
-    <!-- End of header section  -->
+    <!-- Header Section End -->
 
-
-    <!-- Main Container, sidenav, main-section, table-of-content -->
-    <div class="container-fluid">
-        <div class="row flex-xl-nowrap">
-            <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
-                <form class="bd-search d-flex align-items-center" method="GET" action="search">
-                    <!-- <input type="search" class="form-control" id="search-input" placeholder="Search..."
-                        aria-label="Search for..." autocomplete="off" name="query"> -->
-                    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button"
-                        data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav"
-                        aria-expanded="false" aria-label="Toggle docs navigation"><svg
-                            xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30"
-                            focusable="true">
-                            <title>Menu</title>
-                            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
-                                d="M4 7h22M4 15h22M4 23h22" />
-                        </svg>
-                    </button>
-                </form>
-
-                <nav class="collapse bd-links" id="bd-docs-nav">
-                    <div class="bd-toc-item active">
-                        <a class="bd-toc-link font-weight-normal" style="background-color: #3d0e83;color: white"
-                            href="#">
-                            Table of Contents
-                        </a>
-
-                        <ul class="nav bd-sidenav">
-                            {% for key, value in title_primary_keys.items %}
-                            <li>
-                                <a href="{% url 'tutorial' pk=value %}">
+    <!-- Main Section -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- side nav table of contents -->
+            <div class="col-sm-3 mx-auto">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Introduction
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <ul class="list-unstyled py-1 px-3">
+                                {% if current_url == 'tutorial' %}
+                                {% for key, value in title_primary_keys.items %}
+                                <a href="{% url 'tutorial' pk=value %}"
+                                    class="list-group-item list-group-item-action bg-light">
                                     {{ key }}
                                 </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
                     </div>
-                </nav>
+                </div>
             </div>
-            <!-- side nav end -->
 
-            <!-- section nav start -->
-            <div class="d-none d-xl-block col-xl-2 bd-toc sticky-top">
-                <!-- write your right sidenav code..... -->
-            </div>
-            <!-- section nav end -->
-
-            <!-- body section -->
-            <main class="col-12 col-md-9 col-xl-8 py-md-4 pl-md-5 bd-content" role="main">
+            <!-- main section -->
+            <div class="col-sm-8 mx-auto">
                 {% if title %}
                 <h2 class="mt-4"> {{ title }} </h2>
                 {% endif %}
@@ -218,28 +140,141 @@
 
                     {% endblock content %}
                 </div>
-            </main>
+
+                <!-- Pagination -->
+                <nav class="mt-4" aria-label="Page navigation example">
+                    <ul class="pagination justify-content-between">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="{% url 'tutorial' pk=4 %}">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-2 mx-auto"></div>
         </div>
     </div>
-    <!-- main section end -->
 
-    <!-- footer section start -->
-    <div class="container-fluid" style="width: 100%;">
-        <footer class="py-3 bg-dark footer">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Coders Blog {{ date.year }}</p>
+    <br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in
+                            to additional content.
+                        </p>
+                        <a href="#" class="btn btn-light">Go somewhere</a>
+                    </div>
+                </div>
             </div>
-        </footer>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in
+                            to additional content.
+                        </p>
+                        <a href="#" class="btn btn-light">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in
+                            to additional content.
+                        </p>
+                        <a href="#" class="btn btn-light">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in
+                            to additional content.
+                        </p>
+                        <a href="#" class="btn btn-light">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- footer section end -->
 
-    <!-- CkEditor Perspective -->
-    <!-- ckeditor helping stylesheet -->
-    <link rel="stylesheet"
-        href="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css' %}" />
-    <script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}"></script>
-    <!-- End CkEditor helper sheet -->
+    <!-- Footer Section Start -->
+    <br /><br />
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6 class='text-dark'>About</h6>
+                    <p class="text-justify">Data analysis is a process of inspecting, cleansing,
+                        transforming and modeling data with the goal of discovering
+                        useful information, informing conclusions and supporting
+                        decision-making.</p>
+                </div>
 
+                <div class="col-xs-6 col-md-3">
+                    <h6 class='text-dark'>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'tutorial' pk=1 %}" class="text-decoration-none">Python</a></li>
+                        <li><a href="#" class="text-decoration-none">Django</a></li>
+                        <li><a href="#" class="text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-decoration-none">Java</a></li>
+                        <li><a href="#" class="text-decoration-none">Android</a></li>
+                        <li><a href="#" class="text-decoration-none">Templates</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6 class='text-dark'>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#" class="text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-decoration-none">Contact Us</a></li>
+                        <li><a href="#" class="text-decoration-none">Contribute</a></li>
+                        <li><a href="#" class="text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-decoration-none">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; {{ date.year }} All Rights Reserved by
+                        <a class="text-dark text-decoration-none" href="#">DevCoder</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons list-unstyled list-inline">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Section End -->
+
+    <!-- bootstrap cdnjs -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -249,44 +284,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-
-    <!-- add jquery script for form auto complete -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <script>
-        $(function () {
-            var availableTags = [
-                "ActionScript",
-                "AppleScript",
-                "Asp",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-            ];
-            $("#search-input").autocomplete({
-                source: availableTags
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
