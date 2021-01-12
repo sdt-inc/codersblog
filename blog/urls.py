@@ -19,6 +19,6 @@ urlpatterns = [
     re_path(r'search/\Z',
             views.search, name='search'),
     path('sitemap.xml', sitemap,
-         {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6, changefreq='always')}},
+         {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6, changefreq='hourly')}},
          name='django.contrib.sitemaps.views.sitemap'),
 ]
