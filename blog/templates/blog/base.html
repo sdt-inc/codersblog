@@ -69,11 +69,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="#">DL</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="#" target="_blank">ML Projects</a>
+                    <a class="nav-link font-weight-bold" href="#" target="_blank">Projects</a>
                 </li>
             </ul>
         </div>
@@ -117,7 +113,7 @@
                                 <li>
                                     {% for key, value in title_primary_keys.items %}
                                     <a href="{% url 'tutorial' pk=value %}"
-                                        class="list-group-item text-decoration-none list-group-item-action"
+                                        class="list-group-item text-decoration-none list-group-item-action text-capitalize"
                                         style="margin: 0; border-style: none;">
                                         <i class="fal fa-chevron-right" style="padding-right: 10px"></i>{{ key }}
                                     </a>
