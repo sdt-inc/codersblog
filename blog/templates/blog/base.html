@@ -19,6 +19,10 @@
     {% endif %}
 
 
+
+    <!-- favicon ico-->
+    <link rel="shortcut icon" type="image/png" href="{% static 'blog/img/favicon.svg' %}" />
+
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
 
@@ -43,17 +47,20 @@
 <body>
     <!-- Header Section Start -->
     <header class="navbar navbar-expand navbar-light flex-column sticky-top flex-md-row bd-navbar shadow rounded">
-        <div class="navbar-nav navbar-expand-lg">
+        <div class="navbar-nav navbar-nav-scroll navbar-expand-lg">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="/">DC Blog</a>
+                    <a class="nav-item nav-link navbar-brand" style="font-family: Impact;" href="/">DevCoder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link font-weight-bold" href="/">Blog</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions"
+                    <a class="nav-item nav-link dropdown-toggle mr-md-2 font-weight-bold" href="#" id="bd-versions"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tutorials
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'tutorial' pk=1 %}"> Python</a>
+                        <a class="dropdown-item font-weight-light" href="{% url 'tutorial' pk=1 %}"> Python</a>
                         <a class="dropdown-item" href="#"> DSA</a>
                         <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#"> Django</a>
@@ -62,11 +69,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">DL</a>
+                    <a class="nav-link font-weight-bold" href="#">DL</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" target="_blank">ML Projects</a>
+                    <a class="nav-link font-weight-bold" href="#" target="_blank">ML Projects</a>
                 </li>
             </ul>
         </div>
@@ -80,10 +87,10 @@
 
         <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
             <li class="nav-item">
-                <a class="nav-link" href="#" target="_blank">Register</a>
+                <a class="nav-link font-weight-bold" href="#" target="_blank">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" target="_blank">Login</a>
+                <a class="nav-link font-weight-bold" href="#" target="_blank">Login</a>
             </li>
         </ul>
     </header>
@@ -93,6 +100,7 @@
     <div class="container-fluid mt-4">
         <div class="row">
             <!-- side nav table of contents -->
+            {% if current_url == 'tutorial' %}
             <div class="col-sm-3 mx-auto">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
@@ -121,9 +129,19 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
 
             <!-- main section -->
             <div class="col-sm-8 mx-auto">
+                <div style="margin-top: 40px"></div>
+                <div id="page-content-wrapper text-center">
+                    {% block search %}
+
+                    {% endblock search %}
+                    <div class="col-sm-2 mx-auto"></div>
+                </div>
+
+                {% if current_url == 'tutorial' %}
                 {% if title %}
                 <h2 class="mt-4"> {{ title }} </h2>
                 {% endif %}
@@ -142,7 +160,13 @@
                     {% block content %}
 
                     {% endblock content %}
+                    <div class="col-sm-2 mx-auto"></div>
                 </div>
+
+                {% else %}
+                {% block index_page %}
+                {% endblock index_page %}
+                {% endif %}
 
                 <!-- Pagination -->
                 <nav class="gap-1" style="margin-top: 60px;" aria-label="Page navigation example">
@@ -157,7 +181,6 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-sm-2 mx-auto"></div>
         </div>
     </div>
 

@@ -1,20 +1,20 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
-{% block content %}
+{% block search %}
 
 {% for search in data %}
 
 <div class="card" style="padding: 0; margin: 0;">
     <div class="card-body">
-        <a href="{% url 'tutorial' pk=search.id %}">
-            <h3 class="card-title">{{ search.title }}</h3>
+        <a class="text-decoration-none font-weight-light text-success" href="{% url 'tutorial' pk=search.id %}">
+            <h4 class="card-title text-capitalize">{{ search.title }}</h4>
         </a>
-        <p class="card-text text-justify"> {{ search.body | truncatewords:20 | safe }}</p>
-    </div>
+        <p class="card-text font-weight-light text-justify"> {{ search.body | truncatewords:20 | safe }}</p>
+    </div> 
 </div>
 <br>
 
 {% endfor %}
 
-{% endblock content %}
+{% endblock search %}
