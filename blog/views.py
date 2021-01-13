@@ -55,14 +55,14 @@ def tutorial(request, slug=None):
 
 
 def view_404(request, exception):
-    if request.user.is_superuser:
-        print(exception)
-
+    
     return render(request, 'blog/404.html')
 
 
 def search(request):
     query = request.GET['query']
-    data = PythonDB.objects.filter(title__icontains=query)
+    print(request.get_full_path())
+    print(query)
+    data = PythonDB.objects.filter(description__icontains=query)
 
     return render(request, 'blog/search.html', {'data': data})

@@ -25,7 +25,7 @@ class PythonDB(models.Model):
         choices=writer_choices, max_choices=3)
 
     date = models.DateField(auto_now=timezone.now())
-    # body = RichTextField(blank=True, null=True)
+    # body = RichTextField(config_name='special' blank=True, null=True)
     body = RichTextUploadingField(config_name='special', blank=True, null=True)
     related_page_link = models.CharField(max_length=200)
 

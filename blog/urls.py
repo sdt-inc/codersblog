@@ -15,7 +15,7 @@ info_dict = {
 urlpatterns = [
     path('', views.index, name='index'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('python/<slug:slug>', views.tutorial, name='tutorial'),
+    path('python/<slug:slug>/', views.tutorial, name='tutorial'),
     re_path(r'search/\Z',
             views.search, name='search'),
     path('sitemap.xml', sitemap,
