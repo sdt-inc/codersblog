@@ -25,9 +25,9 @@ def index(request):
     return render(request, 'blog/index.html', context=context)
 
 
-def tutorial(request, pk=None):
+def tutorial(request, slug=None):
     # data = PythonDB.objects.get(pk=pk)
-    data = get_object_or_404(PythonDB, pk=pk)
+    data = get_object_or_404(PythonDB, slug=slug)
 
     # get current url path name
     current_url = resolve(request.path_info).url_name
@@ -35,7 +35,7 @@ def tutorial(request, pk=None):
     # return all the title from PythonDB database
     # flat true return the results as single values, rather than one-tuples.
     titles = list(PythonDB.objects.values_list('title', flat=True))
-    primary_keys = list(PythonDB.objects.values_list('id', flat=True))
+    primary_keys = list(PythonDB.objects.values_list('slug', flat=True))
 
     title_primary_keys = dict(zip(titles, primary_keys))
 
@@ -51,16 +51,12 @@ def tutorial(request, pk=None):
         'title_primary_keys': title_primary_keys,
         'current_url': current_url,
     }
-    # print(request.path)
-    # print(context.get('test_title_id'))
-    print(context.get('current_url'))
     return render(request, 'blog/tutorial.html', context=context)
 
 
 def view_404(request, exception):
     if request.user.is_superuser:
         print(exception)
-        # create and context and check the result
 
     return render(request, 'blog/404.html')
 

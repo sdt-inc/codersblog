@@ -60,7 +60,7 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tutorials
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item font-weight-light" href="{% url 'tutorial' pk=1 %}"> Python</a>
+                        <a class="dropdown-item font-weight-light" href="{% url 'tutorial' slug='slug-in-django' %}"> Python</a>
                         <a class="dropdown-item" href="#"> DSA</a>
                         <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#"> Django</a>
@@ -117,7 +117,7 @@
                                 {% if current_url == 'tutorial' %}
                                 <li>
                                     {% for key, value in title_primary_keys.items %}
-                                    <a href="{% url 'tutorial' pk=value %}"
+                                    <a href="{% url 'tutorial' slug=value %}"
                                         class="list-group-item text-decoration-none list-group-item-action text-capitalize"
                                         style="margin: 0; border-style: none;">
                                         <i class="fal fa-chevron-right" style="padding-right: 10px"></i>{{ key }}
@@ -177,7 +177,7 @@
                         </li>
 
                         <li class="page-item">
-                            <a class="page-link" href="{% url 'tutorial' pk=4 %}">Next</a>
+                            <a class="page-link" href="{% url 'tutorial' slug='slug-in-django' %}">Next</a>
                         </li>
                     </ul>
                 </nav>
@@ -196,7 +196,7 @@
                             With supporting text below as a natural lead-in
                             to additional content.
                         </p>
-                        <a href="{% url 'tutorial' pk=3 %}" class="btn btn-light">Go somewhere</a>
+                        <a href="{% url 'tutorial' slug='slug-in-django' %}" class="btn btn-light">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -257,7 +257,7 @@
                 <div class="col-xs-6 col-md-3">
                     <h6 class='text-dark'>Categories</h6>
                     <ul class="footer-links">
-                        <li><a href="{% url 'tutorial' pk=1 %}" class="text-decoration-none">Python</a></li>
+                        <li><a href="{% url 'tutorial' slug='slug-in-django' %}" class="text-decoration-none">Python</a></li>
                         <li><a href="#" class="text-decoration-none">Django</a></li>
                         <li><a href="#" class="text-decoration-none">Blog</a></li>
                         <li><a href="#" class="text-decoration-none">Java</a></li>

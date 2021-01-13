@@ -15,10 +15,11 @@ info_dict = {
 urlpatterns = [
     path('', views.index, name='index'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('python/<int:pk>/', views.tutorial, name='tutorial'),
+    path('python/<slug:slug>', views.tutorial, name='tutorial'),
     re_path(r'search/\Z',
             views.search, name='search'),
     path('sitemap.xml', sitemap,
-         {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6, changefreq='hourly')}},
+         {'sitemaps': {'blog': GenericSitemap(
+             info_dict, priority=0.6, changefreq='hourly')}},
          name='django.contrib.sitemaps.views.sitemap'),
 ]
