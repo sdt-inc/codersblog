@@ -10,3 +10,4 @@ from .models import *
 #         fields = '__all__'
 
 admin.site.register(PythonDB)
+admin.site.register(BlogDB)

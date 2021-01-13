@@ -50,17 +50,18 @@
         <div class="navbar-nav navbar-nav-scroll navbar-expand-lg">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-item nav-link navbar-brand" style="font-family: Impact;" href="/">DevCoder</a>
+                    <a class="nav-item nav-link navbar-brand" style="font-family: Impact;" href="/">DevCoders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" href="/">Blog</a>
+                    <a class="nav-item nav-link font-weight-bold" href="{% url 'blog_list' %}">Blogs</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link dropdown-toggle mr-md-2 font-weight-bold" href="#" id="bd-versions"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tutorials
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item font-weight-light" href="{% url 'tutorial' slug='slug-in-django' %}"> Python</a>
+                        <a class="dropdown-item font-weight-light" href="{% url 'tutorial' slug='slug-in-django' %}">
+                            Python</a>
                         <a class="dropdown-item" href="#"> DSA</a>
                         <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#"> Django</a>
@@ -257,7 +258,8 @@
                 <div class="col-xs-6 col-md-3">
                     <h6 class='text-dark'>Categories</h6>
                     <ul class="footer-links">
-                        <li><a href="{% url 'tutorial' slug='slug-in-django' %}" class="text-decoration-none">Python</a></li>
+                        <li><a href="{% url 'tutorial' slug='slug-in-django' %}" class="text-decoration-none">Python</a>
+                        </li>
                         <li><a href="#" class="text-decoration-none">Django</a></li>
                         <li><a href="#" class="text-decoration-none">Blog</a></li>
                         <li><a href="#" class="text-decoration-none">Java</a></li>

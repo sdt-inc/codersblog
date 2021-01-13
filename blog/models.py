@@ -15,7 +15,7 @@ class PythonDB(models.Model):
     description = models.CharField(max_length=200)
     keywords = MultiSelectField(choices=keyword_choices, max_choices=3)
     author = models.CharField(
-        max_length=399, default='http://sdt-inc.github.io/')
+        max_length=50, default='http://sdt-inc.github.io/')
 
     # blog content
     title = models.CharField(max_length=200)
@@ -29,13 +29,39 @@ class PythonDB(models.Model):
     body = RichTextUploadingField(config_name='special', blank=True, null=True)
     related_page_link = models.CharField(max_length=200)
 
-
     def __str__(self):
         return self.title
 
     # slug, sitemap
     def get_absolute_url(self):
         return reverse('tutorial', args=[str(self.id)])  # new
+
+
+class BlogDB(models.Model):
+    description = models.CharField(max_length=200)
+    keywords = MultiSelectField(choices=keyword_choices, max_choices=3)
+    author = models.CharField(
+        max_length=50, default='http://sdt-inc.github.io/')
+
+    # blog content
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, null=True, blank=True)
+    tag = MultiSelectField(choices=keyword_choices, max_choices=3)
+
+    writer_name = MultiSelectField(
+        choices=writer_choices, max_choices=1)
+
+    date = models.DateField(auto_now=timezone.now())
+    # body = RichTextField(config_name='special' blank=True, null=True)
+    body = RichTextUploadingField(config_name='special', blank=True, null=True)
+    related_page_link = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.title
+
+    # slug, sitemap
+    def get_absolute_url(self):
+        return reverse('blog_list', args=[str(self.id)])  # new
 
 
 def slug_generator(sender, instance, *args, **kwargs):
@@ -45,3 +71,4 @@ def slug_generator(sender, instance, *args, **kwargs):
 
 # everytime the PythonDB class object is created this below method is executed.
 pre_save.connect(slug_generator, sender=PythonDB)
+pre_save.connect(slug_generator, sender=BlogDB)

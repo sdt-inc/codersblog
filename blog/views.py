@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render
 from django.urls import resolve
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 
 from .models import PythonDB
-
+from .models import BlogDB
 
 def index(request):
     # current_url = resolve(request.path_info).url_name
@@ -53,6 +54,25 @@ def tutorial(request, slug=None):
     }
     return render(request, 'blog/tutorial.html', context=context)
 
+class BlogListView(ListView):
+    model = BlogDB
+    paginate_by = 10
+
+    template_name = 'blog/blog-list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class BlogDetailView(DetailView):
+
+    model = BlogDB
+    template_name = 'blog/blog-detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 def view_404(request, exception):
     

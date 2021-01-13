@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block index_page %}
+
+
+{% for blog in object_list %}
+
+<div class="card" style="padding: 0; margin: 0;">
+    <div class="card-body">
+        <a class="text-decoration-none font-weight-light text-success" href="{% url 'blog-detail' slug=blog.slug %}">
+            <h4 class="card-title text-capitalize">{{ blog.title }}</h4>
+        </a>
+        <p class="card-text font-weight-light text-justify"> {{ blog.body | truncatewords:12 | safe }}</p>
+
+    </div>
+</div>
+<br>
+
+{% endfor %}
+
+{% endblock index_page %}
