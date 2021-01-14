@@ -89,6 +89,6 @@ def search(request):
     query = request.GET['query']
     print(request.get_full_path())
     print(query)
-    data = PythonDB.objects.filter(title__icontains=query)
+    data = BlogDB.objects.filter(title__icontains=query)
 
     return render(request, 'blog/search.html', {'data': data})

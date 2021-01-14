@@ -7,10 +7,12 @@
 
 <div class="card" style="padding: 0; margin: 0;">
     <div class="card-body">
-        <a class="text-decoration-none font-weight-light text-success" href="{% url 'tutorial' slug=search.slug %}">
+        <a class="text-decoration-none font-weight-light text-success" href="{% url 'blog-detail' slug=search.slug %}">
             <h4 class="card-title text-capitalize">{{ search.title }}</h4>
         </a>
-        <p class="card-text font-weight-light text-justify"> {{ search.body | truncatewords:20 | safe }}</p>
+        <p class="card-text font-weight-light text-justify text-muted"> {{ search.body | truncatewords:16 | safe }}<a
+                class="text-decoration-none text-success" href="#"> Read More</a></p>
+
     </div>
 </div>
 <br>
