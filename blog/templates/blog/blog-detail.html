@@ -1,11 +1,11 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
-{% block index_page %}
+{% block blog_detail_page %}
 
 <h2>{{ object.title }}</h2>
 <p>{{ object.body | safe }}</p>
 <p>Reporter: {{ object.author }}</p>
 <p>Published: {{ object.date|date }}</p>
 
-{% endblock index_page %}
+{% endblock blog_detail_page %}
