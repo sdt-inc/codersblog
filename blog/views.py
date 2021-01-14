@@ -92,3 +92,6 @@ def search(request):
     data = BlogDB.objects.filter(title__icontains=query).order_by('-date')
 
     return render(request, 'blog/search.html', {'data': data})
+
+def Editor(request):
+    return render(request,'blog/editor.html')
