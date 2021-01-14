@@ -11,3 +11,4 @@ from .models import *
 
 admin.site.register(PythonDB)
 admin.site.register(BlogDB)
+admin.site.register(UserEmail)

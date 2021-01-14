@@ -72,3 +72,10 @@ def slug_generator(sender, instance, *args, **kwargs):
 # everytime the PythonDB class object is created this below method is executed.
 pre_save.connect(slug_generator, sender=PythonDB)
 pre_save.connect(slug_generator, sender=BlogDB)
+
+
+class UserEmail(models.Model):
+    email = models.EmailField(max_length=250)
+
+    def __str__(self):
+        return self.email

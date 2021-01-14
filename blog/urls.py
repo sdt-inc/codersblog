@@ -6,6 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from blog.models import PythonDB
 
 from . import views
+from .views import UserAdded
 
 
 info_dict = {
@@ -25,5 +26,6 @@ urlpatterns = [
          {'sitemaps': {'blog': GenericSitemap(
              info_dict, priority=0.6, changefreq='hourly')}},
          name='django.contrib.sitemaps.views.sitemap'),
-    path('editor',views.Editor,name='editor')
+    path('editor',views.Editor,name='editor'),
+    path('useradd',views.UserAdded,name='useradd')
 ]

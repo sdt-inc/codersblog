@@ -24,9 +24,11 @@
                 code</p>
             <br>
             <lead style="color: rgba(37,38,94,0.7)" class='font-weight-bold'>Get the latest tutorials and updates!</>
-                <form class="form-inline mt-4">
-                    <div class="form-group">
-                        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
+                <form class="form-inline mt-4" method="POST">
+                    
+                    <div class="form-group" >
+                        {% csrf_token %}
+                        <input type="email"  class="form-control form-control-lg" name="useremail" id="exampleInputEmail1"
                             aria-describedby="emailHelp" placeholder="Enter email">
                         <button type="submit" class="btn btn-primary"
                             style="padding: 10px; margin-left: 10px;">Submit</button>
@@ -130,5 +132,6 @@
 </div>
 <br>
 <hr>
+
 
 {% endblock index_page %}
