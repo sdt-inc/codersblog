@@ -49,33 +49,33 @@
     <header class="navbar navbar-expand navbar-light flex-column sticky-top flex-md-row bd-navbar shadow rounded">
         <div class="navbar-nav navbar-nav-scroll navbar-expand-lg">
             <ul class="nav nav-pills">
-                <li class="nav-item">
+                <li class="nav-item zoom">
                     <a class="nav-item nav-link navbar-brand" style="font-family: Impact;" href="/">DevCoders</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item zoom">
                     <a class="nav-item nav-link font-weight-bold" href="{% url 'blog_list' %}">Blogs</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown zoom">
                     <a class="nav-item nav-link dropdown-toggle mr-md-2 font-weight-bold" href="#" id="bd-versions"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tutorials
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu zoom">
                         <a class="dropdown-item font-weight-light" href="{% url 'tutorial' slug='slug-in-django' %}">
                             Python</a>
-                        <a class="dropdown-item" href="#"> DSA</a>
+                        <a class="dropdown-item zoom" href="#"> DSA</a>
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#"> Django</a>
-                        <a class="dropdown-item" href="#"> C++</a>
-                        <a class="dropdown-item" href="#"> Security</a>
+                        <a class="dropdown-item zoom" href="#"> Django</a>
+                        <a class="dropdown-item zoom" href="#"> C++</a>
+                        <a class="dropdown-item zoom" href="#"> Security</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item zoom">
                     <a class="nav-link font-weight-bold" href="#" target="_blank">Projects</a>
                 </li>
             </ul>
         </div>
 
-        <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+        <ul class="navbar-nav flex-row ml-md-auto d-md-flex zoom">
             <form class="form-inline my-2 my-lg-0" method="GET" action="search">
                 <input type="search" class="form-control" id="search-input" placeholder="Search Blog..."
                     aria-label="Search for..." autocomplete="off" name="query" />
@@ -83,13 +83,13 @@
         </ul>
 
         <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
-            <li class="nav-item">
+            <li class="nav-item zoom">
                 <a class="nav-link font-weight-bold" href="/admin" target="_blank">Admin</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item zoom">
                 <a class="nav-link font-weight-bold" href="#" target="">Register</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item zoom">
                 <a class="nav-link font-weight-bold" href="#" target="">Login</a>
             </li>
             <li class="nav-item">

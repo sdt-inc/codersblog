@@ -41,7 +41,7 @@
                 <h4 class="card-title text-capitalize text-dark">{{ blog.title }}</h4>
             </a>
             <small class="font-weight-light text-justify text-muted"> {{ blog.body | truncatewords:15 | safe }}
-                <a href="{% url 'blog-detail' slug=blog.slug %}" class="text-decoration-none text-success">Read
+                <a href="{% url 'blog-detail' slug=blog.slug %}" class="text-decoration-none text-success zoom">Read
                     More</a>
             </small>
             <div class="row">
