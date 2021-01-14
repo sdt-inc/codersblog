@@ -4,19 +4,27 @@
 {% block search %}
 
 {% for search in data %}
+<div style="margin:0rem;"></div>
+<div class="shadow-none p-0">
+    <a class="text-decoration-none font-weight-light text-success" href="{% url 'blog-detail' slug=search.slug %}">
+        <h4 class="card-title text-capitalize text-dark">{{ search.title }}</h4>
+    </a>
+    <small class="font-weight-light text-justify text-muted"> {{ search.body | truncatewords:15 | safe }}
+        <a href="{% url 'blog-detail' slug=search.slug %}" class="text-decoration-none text-success">Read
+            More</a>
+    </small>
+    <div class="row">
+        <ul style="display: inline;">
+            <li class="pr-2" style="display: inline;"><i class="fas fa-tag"></i></li>
 
-<div class="card" style="padding: 0; margin: 0;">
-    <div class="card-body">
-        <a class="text-decoration-none font-weight-light text-success" href="{% url 'blog-detail' slug=search.slug %}">
-            <h4 class="card-title text-capitalize">{{ search.title }}</h4>
-        </a>
-        <p class="card-text font-weight-light text-justify text-muted"> {{ search.body | truncatewords:16 | safe }}<a
-                class="text-decoration-none text-success" href="#"> Read More</a></p>
-
+            <li class="pr-2" style="display: inline;"><a class="text-decoration-none text-success" href="#">
+                    {{ search.get_tag_display|cut:'0' }}
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
-<br>
-
+<hr>
 {% endfor %}
 
 {% endblock search %}

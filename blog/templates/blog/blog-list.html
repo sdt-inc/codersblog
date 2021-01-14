@@ -47,10 +47,11 @@
             <div class="row">
                 <ul style="display: inline;">
                     <li class="pr-2" style="display: inline;"><i class="fas fa-tag"></i></li>
-                    <li class="pr-2" style="display: inline;"><a class="text-decoration-none text-success"
-                            href="#">Python</a></li>
-                    <li class="pr-2" style="display: inline;"><a class="text-decoration-none text-success"
-                            href="#">Django</a></li>
+
+                    <li class="pr-2" style="display: inline;"><a class="text-decoration-none text-success" href="#">
+                            {{ blog.get_tag_display|cut:'0' }}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

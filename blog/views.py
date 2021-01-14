@@ -83,14 +83,12 @@ class BlogDetailView(DetailView):
 
 
 def view_404(request, exception):
-
     return render(request, 'blog/404.html')
 
 
 def search(request):
     query = request.GET['query']
     print(request.get_full_path())
-    print(query)
-    data = BlogDB.objects.filter(title__icontains=query)
+    data = BlogDB.objects.filter(title__icontains=query).order_by('-date')
 
     return render(request, 'blog/search.html', {'data': data})
