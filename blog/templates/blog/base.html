@@ -100,6 +100,10 @@
 
     <!-- Main Section -->
     <div class="container-fluid mt-4">
+        {% if current_url == 'blog_list' %}
+        {% block bloglistview %}
+        {% endblock bloglistview %}
+        {% endif %}
         <div class="row">
             <!-- side nav table of contents -->
             {% if current_url == 'tutorial' %}
@@ -171,7 +175,7 @@
                 {% endif %}
 
                 <!-- Pagination -->
-                <nav class="gap-1" style="margin-top: 60px;" aria-label="Page navigation example">
+                <!-- <nav class="gap-1" style="margin-top: 60px;" aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -181,12 +185,30 @@
                             <a class="page-link" href="{% url 'tutorial' slug='slug-in-django' %}">Next</a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
+                {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                <a class="btn btn-outline-success mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <a class="btn btn-light mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a class="btn btn-light mb-4"
+                    href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    {% endif %}
             </div>
         </div>
     </div>
 
     <br /><br />
+    {% if current_url == 'tutorial' %}
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -239,7 +261,7 @@
             </div>
         </div>
     </div>
-
+    {% endif %}
     <!-- Footer Section Start -->
     <br /><br />
     <!-- Site footer -->

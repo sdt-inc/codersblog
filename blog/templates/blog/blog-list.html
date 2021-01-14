@@ -1,22 +1,88 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
-{% block index_page %}
+{% block bloglistview %}
 
 
-{% for blog in object_list %}
 
-<div class="card" style="padding: 0; margin: 0;">
-    <div class="card-body">
-        <a class="text-decoration-none font-weight-light text-success" href="{% url 'blog-detail' slug=blog.slug %}">
-            <h4 class="card-title text-capitalize">{{ blog.title }}</h4>
-        </a>
-        <p class="card-text font-weight-light text-justify"> {{ blog.body | truncatewords:12 | safe }}</p>
-
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="card mb-3" style="max-width: 100%">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'blog/img/django.jpg' %}" alt="..." class="img-fluid"/>
+                </div>
+                <div class="pl-2 col-md-8" style="position: relative;">
+                    <div class="card-body">
+                        <p><a class="text-decoration-none text-success" href="#">Latest</a></p>
+                        <a href="#" class="text-decoration-none fs-4 text-dark">Path to learn Django</a>
+                        <p class="text-muted">
+                            Django is a high-level Python Web framework that encourages rapid development and clean,
+                            pragmatic design. Built by
+                            experienced developers ...
+                            <a class="text-decoration-none text-success" href="#">Read More</a>
+                        </p>
+                        <br>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                        <time style="position: absolute; bottom: 2%; left: 10;"><i class="far fa-clock"></i>
+                            January 14, 2021</time>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% for blog in object_list %}
+        <div style="margin:0rem;"></div>
+        <div class="shadow-none p-1">
+            <a class="text-decoration-none font-weight-light text-success"
+                href="{% url 'blog-detail' slug=blog.slug %}">
+                <h4 class="card-title text-capitalize text-dark">{{ blog.title }}</h4>
+            </a>
+            <small class="font-weight-light text-justify text-muted"> {{ blog.body | truncatewords:15 | safe }}
+                <a href="{% url 'blog-detail' slug=blog.slug %}" class="text-decoration-none text-success">Read More</a>
+            </small>
+            <div class="row">
+                <ul style="display: inline;">
+                    <li class="pr-2" style="display: inline;"><i class="fas fa-tag"></i></li>
+                    <li class="pr-2" style="display: inline;"><a class="text-decoration-none text-success"
+                            href="#">Python</a></li>
+                    <li class="pr-2" style="display: inline;"><a class="text-decoration-none text-success"
+                            href="#">Django</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
     </div>
+
+    <!-- <div class="col-md-4 ml-2">
+        <h3 class="text-dark">Quick Links</h3>
+        <ul class="">
+            <li class="mb-4"><a href="#"></a></li>
+            <li class="mb-4"><a href="#"></a></li>
+            <li class="mb-4"><a href="#"></a></li>
+            <li class="mb-4"><a href="#"></a></li>
+            <li class="mb-4"><a href="#"></a></li>
+            <li class="mb-4"><a href="#"></a></li>
+        </ul>
+        <br><br>
+        <div>
+            <h3 class="text-dark">Feature Articles</>
+                <ul class="">
+                    <li class="mb-4"><a href="#"></a></li>
+                    <li class="mb-4"><a href="#"></a></li>
+                    <li class="mb-4"><a href="#"></a></li>
+                    <li class="mb-4"><a href="#"></a></li>
+                    <li class="mb-4"><a href="#"></a></li>
+                    <li class="mb-4"><a href="#"></a></li>
+                </ul>
+        </div>
+    </div> -->
+
 </div>
-<br>
 
-{% endfor %}
 
-{% endblock index_page %}
+{% endblock bloglistview %}

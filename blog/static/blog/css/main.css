@@ -4,6 +4,12 @@
     background: transparent;
 }
 
+body {
+    font-family: Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
+    color: rgba(0, 0, 0, .84);
+}
+
 pre>code {
     font-family: "Lucida Console";
     font-size: 20px;

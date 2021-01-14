@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from .models import PythonDB
 from .models import BlogDB
 
+
 def index(request):
     # current_url = resolve(request.path_info).url_name
     # test_data = PythonDB.objects.values_list('title')
@@ -54,14 +55,18 @@ def tutorial(request, slug=None):
     }
     return render(request, 'blog/tutorial.html', context=context)
 
+
 class BlogListView(ListView):
     model = BlogDB
-    paginate_by = 10
+    paginate_by = 2
+    ordering = ['-date']
 
     template_name = 'blog/blog-list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['current_url'] = 'blog_list'
+        print(context)
         return context
 
 
@@ -74,8 +79,9 @@ class BlogDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         return context
 
+
 def view_404(request, exception):
-    
+
     return render(request, 'blog/404.html')
 
 
@@ -83,6 +89,6 @@ def search(request):
     query = request.GET['query']
     print(request.get_full_path())
     print(query)
-    data = PythonDB.objects.filter(description__icontains=query)
+    data = PythonDB.objects.filter(title__icontains=query)
 
     return render(request, 'blog/search.html', {'data': data})
