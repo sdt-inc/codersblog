@@ -1,10 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import resolve
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
 from .models import PythonDB
 from .models import BlogDB
+from .models import UserEmail
 
 
 def index(request):
@@ -93,5 +94,12 @@ def search(request):
 
     return render(request, 'blog/search.html', {'data': data})
 
+
 def Editor(request):
-    return render(request,'blog/editor.html')
+    return render(request, 'blog/editor.html')
+
+
+def UserAdded(request):
+    if request.method == 'POST':
+        UserEmail(email=request.POST['useremail']).save()
+    return redirect('/')

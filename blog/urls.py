@@ -25,5 +25,6 @@ urlpatterns = [
          {'sitemaps': {'blog': GenericSitemap(
              info_dict, priority=0.6, changefreq='hourly')}},
          name='django.contrib.sitemaps.views.sitemap'),
-    path('editor',views.Editor,name='editor')
+    path('editor', views.Editor, name='editor'),
+    path('subscription', views.UserAdded, name='useradd'),
 ]

@@ -24,16 +24,22 @@
                 code</p>
             <br>
             <lead style="color: rgba(37,38,94,0.7)" class='font-weight-bold'>Get the latest tutorials and updates!</>
-                <form class="form-inline mt-4">
+                <form class="form-inline mt-4" method="POST" action='subscription'>
+
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Enter email">
+                        {% csrf_token %}
+                        <input type="email" class="form-control form-control-lg" name="useremail"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" autocomplete='on'>
                         <button type="submit" class="btn btn-primary zoom"
                             style="padding: 10px; margin-left: 10px;">Submit</button>
                     </div>
                     <small id="emailHelp" class="form-text text-muted mt-1">We'll never share your email with anyone
                         else.</small>
                 </form>
+                <!-- <form class="form-inline my-2 my-lg-0" method="GET" action="subscription">
+                    <input type="email" class="form-control" id="search-input" placeholder="Search Blog..."
+                        aria-label="Search for..." autocomplete="off" name="query" />
+                </form> -->
         </div>
         <div class="col-md-7" style="max-height: 100%;">
             <img src="{% static 'blog/img/home.jpg' %}" alt="" class='img-fluid'>
@@ -131,5 +137,6 @@
 </div>
 <br>
 <hr>
+
 
 {% endblock index_page %}
