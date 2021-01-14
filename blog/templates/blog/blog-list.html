@@ -4,6 +4,17 @@
 {% block bloglistview %}
 
 
+<<<<<<< HEAD
+=======
+{% for blog in object_list %}
+
+<div class="card" style="padding: 0; margin: 0;">
+    <div class="card-body">
+        <a class="text-decoration-none font-weight-light text-success" href="{% url 'blog-detail' slug=blog.slug %}">
+            <h6 class="card-title text-capitalize">{{ blog.title }}</h6>
+        </a>
+        <p class="card-text font-weight-light text-justify"> {{ blog.body | truncatewords:12 | safe }}</p>
+>>>>>>> a210f97d27d1069c59c3ed8202c9a202c371d1a3
 
 <div class="row">
     <div class="col-md-1"></div>
