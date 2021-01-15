@@ -79,3 +79,8 @@ class UserEmail(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Comment(models.Model):
+    blog = models.ForeignKey(BlogDB, on_delete=models.CASCADE)
+    comment_body = RichTextField(config_name='special', blank=True, null=True)
