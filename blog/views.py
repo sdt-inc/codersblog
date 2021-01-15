@@ -1,13 +1,17 @@
+from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import resolve
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.views.decorators.cache import cache_page
+
 
 from .models import PythonDB
 from .models import BlogDB
 from .models import UserEmail
 
 
+@cache_page(60)
 def index(request):
     # current_url = resolve(request.path_info).url_name
     # test_data = PythonDB.objects.values_list('title')
@@ -28,6 +32,7 @@ def index(request):
     return render(request, 'blog/index.html', context=context)
 
 
+@cache_page(60)
 def tutorial(request, slug=None):
     # data = PythonDB.objects.get(pk=pk)
     data = get_object_or_404(PythonDB, slug=slug)
@@ -57,6 +62,7 @@ def tutorial(request, slug=None):
     return render(request, 'blog/tutorial.html', context=context)
 
 
+@method_decorator(cache_page(60 * 5), name='dispatch')
 class BlogListView(ListView):
     model = BlogDB
     paginate_by = 2
@@ -69,7 +75,6 @@ class BlogListView(ListView):
         context['current_url'] = 'blog_list'
         # get latest features post
         # context[''] = BlogDB.objects.filter()
-        print(context)
         return context
 
 
@@ -95,6 +100,7 @@ def search(request):
     return render(request, 'blog/search.html', {'data': data})
 
 
+@cache_page(60)
 def Editor(request):
     return render(request, 'blog/editor.html')
 
