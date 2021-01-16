@@ -10,6 +10,8 @@ from .models import PythonDB
 from .models import BlogDB
 from .models import UserEmail
 
+from codersblog.utils import add_prefix
+
 
 def index(request):
     print("call index ------- ")
@@ -22,7 +24,7 @@ def index(request):
         'description': str(data.description),
         'keywords': list(data.keywords),
         'author': str(data.author),
-        'title': str(data.title),
+        'title': data.title,
         'writer_name': str(data.writer_name),
         'date': data.date,
         'body': data.body,
@@ -47,8 +49,8 @@ def tutorial(request, slug=None):
     slug_text = list(PythonDB.objects.values_list(
         'slug', flat=True).order_by('-date'))
 
+    titles = add_prefix(titles, 'Python')
     title_slug_text = dict(zip(titles, slug_text))
-    print(title_slug_text)
 
     context = {
         'description': data.description,
@@ -67,7 +69,7 @@ def tutorial(request, slug=None):
 
 class BlogListView(ListView):
     model = BlogDB
-    paginate_by = 2
+    paginate_by = 5
     ordering = ['-date']
 
     template_name = 'blog/blog-list.html'
@@ -76,8 +78,6 @@ class BlogListView(ListView):
         print("call list view ----------")
         context = super().get_context_data(**kwargs)
         context['current_url'] = 'blog_list'
-        # get latest features post
-        # context[''] = BlogDB.objects.filter()
         return context
 
 
@@ -92,8 +92,8 @@ class BlogDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # print(context.object.id)
         # print(context.object.tag)
-        print(context)
-        # context['features_blog'] = BlogDB.objects.filter()
+        print(context['object'].keywords)
+        # context['features_blog'] = BlogDB.objects.filter(key)
         return context
 
 
