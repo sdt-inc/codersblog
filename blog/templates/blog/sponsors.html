@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block blog_detail_page %}
+<div class="container-fluid">
+    <img src="{% static 'blog/img/django.jpg' %}" class="rounded img-thumbnail float-start" alt="...">
+    <img src="{% static 'blog/img/django.jpg' %}" class="rounded img-thumbnail float-end" alt="...">
+</div>
+{% endblock blog_detail_page %}

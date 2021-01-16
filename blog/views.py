@@ -17,7 +17,7 @@ def index(request):
     # test_data = PythonDB.objects.values_list('title')
     # print(test_data)
 
-    data = PythonDB.objects.all()[1]
+    data = PythonDB.objects.all()[0]
     context = {
         'description': str(data.description),
         'keywords': list(data.keywords),
@@ -42,10 +42,13 @@ def tutorial(request, slug=None):
 
     # return all the title from PythonDB database
     # flat true return the results as single values, rather than one-tuples.
-    titles = list(PythonDB.objects.values_list('title', flat=True))
-    primary_keys = list(PythonDB.objects.values_list('slug', flat=True))
+    titles = list(PythonDB.objects.values_list(
+        'title', flat=True).order_by('-date'))
+    slug_text = list(PythonDB.objects.values_list(
+        'slug', flat=True).order_by('-date'))
 
-    title_primary_keys = dict(zip(titles, primary_keys))
+    title_slug_text = dict(zip(titles, slug_text))
+    print(title_slug_text)
 
     context = {
         'description': data.description,
@@ -56,7 +59,7 @@ def tutorial(request, slug=None):
         'date': data.date,
         'body': data.body,
         'related_page_link': data.related_page_link,
-        'title_primary_keys': title_primary_keys,
+        'title_slug_text': title_slug_text,
         'current_url': current_url,
     }
     return render(request, 'blog/tutorial.html', context=context)
@@ -118,3 +121,7 @@ def UserAdded(request):
     if request.method == 'POST':
         UserEmail(email=request.POST['useremail']).save()
     return redirect('/')
+
+
+def sponsors(request):
+    return render(request, 'blog/sponsors.html')

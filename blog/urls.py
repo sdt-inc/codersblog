@@ -27,4 +27,5 @@ urlpatterns = [
          name='django.contrib.sitemaps.views.sitemap'),
     path('editor', views.Editor, name='editor'),
     path('subscription', views.UserAdded, name='useradd'),
+    path('sponsors', views.sponsors, name='sponsors')
 ]
