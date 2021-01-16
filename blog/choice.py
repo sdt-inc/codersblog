@@ -1,11 +1,11 @@
 
 keyword_choices = (
-    ('py', 'Python'),
-    ('js', 'JavaScript'),
-    ('css', 'CSS'),
-    ('html', 'HTML'),
-    ('dj', 'Django'),
-    ('db', 'Database')
+    ('Python', 'Python'),
+    ('JavaScript', 'JavaScript'),
+    ('CSS', 'CSS'),
+    ('HTML', 'HTML'),
+    ('Django', 'Django'),
+    ('Database', 'Database')
 )
 
 
