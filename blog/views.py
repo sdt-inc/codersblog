@@ -11,8 +11,8 @@ from .models import BlogDB
 from .models import UserEmail
 
 
-@cache_page(60)
 def index(request):
+    print("call index ------- ")
     # current_url = resolve(request.path_info).url_name
     # test_data = PythonDB.objects.values_list('title')
     # print(test_data)
@@ -32,8 +32,8 @@ def index(request):
     return render(request, 'blog/index.html', context=context)
 
 
-@cache_page(60)
 def tutorial(request, slug=None):
+    print("call tutorial ---------------- ")
     # data = PythonDB.objects.get(pk=pk)
     data = get_object_or_404(PythonDB, slug=slug)
 
@@ -62,7 +62,6 @@ def tutorial(request, slug=None):
     return render(request, 'blog/tutorial.html', context=context)
 
 
-@method_decorator(cache_page(60 * 5), name='dispatch')
 class BlogListView(ListView):
     model = BlogDB
     paginate_by = 2
@@ -71,6 +70,7 @@ class BlogListView(ListView):
     template_name = 'blog/blog-list.html'
 
     def get_context_data(self, **kwargs):
+        print("call list view ----------")
         context = super().get_context_data(**kwargs)
         context['current_url'] = 'blog_list'
         # get latest features post
@@ -82,18 +82,25 @@ class BlogDetailView(DetailView):
 
     model = BlogDB
     template_name = 'blog/blog-detail.html'
-    paginate_by = 1
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
+        print('call blog-detail view')
         context = super().get_context_data(**kwargs)
+        # print(context.object.id)
+        # print(context.object.tag)
+        print(context)
+        # context['features_blog'] = BlogDB.objects.filter()
         return context
 
 
 def view_404(request, exception):
+    print('call 404 ----------------')
     return render(request, 'blog/404.html')
 
 
 def search(request):
+    print('call -search ---------------')
     query = request.GET['query']
     print(request.get_full_path())
     data = BlogDB.objects.filter(title__icontains=query).order_by('-date')
@@ -101,12 +108,13 @@ def search(request):
     return render(request, 'blog/search.html', {'data': data})
 
 
-@cache_page(60)
 def Editor(request):
+    print('call editor ---------------')
     return render(request, 'blog/editor.html')
 
 
 def UserAdded(request):
+    print('call useradd --------')
     if request.method == 'POST':
         UserEmail(email=request.POST['useremail']).save()
     return redirect('/')
