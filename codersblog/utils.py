@@ -1,3 +1,5 @@
+import itertools
+import operator
 import random
 import string
 
@@ -27,3 +29,18 @@ def unique_slug_generator(instance, new_slug=None):
         )
         return unique_slug_generator(instance, new_slug=new_slug)
     return slug
+
+
+def add_prefix(title_list, tutorial_lang_prefix):
+    """
+        This function take a list that contains list_of_titles, and aslo a
+        tutorial_lang_prefix then return tutorial_lang_prefix + ' - ' + title'
+
+        Example:
+            If
+            title_list contain      => ['Getting Started', 'Installation',] and,
+            tutorial_lang_prefix    => 'Python'
+
+            it returns -> ['Python - Getting Started', 'Python - Installation', ]
+    """
+    return [str(tutorial_lang_prefix + ' - ' + title) for title in title_list]
