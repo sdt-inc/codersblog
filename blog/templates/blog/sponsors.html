@@ -2,8 +2,26 @@
 {% load static %}
 
 {% block blog_detail_page %}
-<div class="container-fluid">
-    <img src="{% static 'blog/img/django.jpg' %}" class="rounded img-thumbnail float-start" alt="...">
-    <img src="{% static 'blog/img/django.jpg' %}" class="rounded img-thumbnail float-end" alt="...">
+<div class="container-container">
+    <!-- <img src="{% static 'blog/img/django.jpg' %}" class="rounded img-thumbnail float-start" alt="..."> -->
+    <h2 class="mb-4 pb-2">All Sponsors </h2>
+    {% for info in sponsors_data %}
+    <div class="card border-bottom mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{% static 'blog/img/graduate.svg' %}" class="rounded-circle"
+                    style="height: 100%; width: 150px;" alt="university graduate avatar">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ info.name }}</h5>
+                    <p class="card-text">{{ info.position }}</p>
+                    <p class="card-text">{{ info.study }}</p>
+                    <a href="mailto:{{ info.email }}" class="text-muted">{{ info.email }}</a>.<br>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock blog_detail_page %}

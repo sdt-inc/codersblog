@@ -5,11 +5,13 @@ keyword_choices = (
     ('CSS', 'CSS'),
     ('HTML', 'HTML'),
     ('Django', 'Django'),
-    ('Database', 'Database')
+    ('PHP', 'PHP'),
+    ('Others', 'Others'),
 )
 
 
 writer_choices = (
     ('NH', 'Md. Nahid Hassan'),
-    ('MN', 'Md. Mehedi Hasan')
+    ('MN', 'Md. Mehedi Hasan'),
+    ('M3C', 'Mursalin Chowdhury'),
 )

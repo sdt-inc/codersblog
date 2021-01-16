@@ -45,7 +45,7 @@ class BlogDB(models.Model):
 
     # blog content
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, null=True, blank=True)
+    slug = models.SlugField(max_length=200, null=True, blank=True, unique=True)
     tag = MultiSelectField(choices=keyword_choices, max_choices=3)
 
     writer_name = MultiSelectField(
@@ -62,6 +62,22 @@ class BlogDB(models.Model):
     # slug, sitemap
     def get_absolute_url(self):
         return reverse('blog_list', args=[str(self.id)])  # new
+
+
+class SponsorDB(models.Model):
+    name = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    study = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    # slug = models.SlugField(max_length=200, null=True, blank=True, unique=True)
+    date = models.DateField(auto_now=timezone.now())
+
+    def __str__(self):
+        return self.name
+
+    # slug, sitemap
+    def get_absolute_url(self):
+        return reverse('sponsors', args=[str(self.id)])  # new
 
 
 def slug_generator(sender, instance, *args, **kwargs):

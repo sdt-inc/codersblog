@@ -9,6 +9,7 @@ from django.views.decorators.cache import cache_page
 from .models import PythonDB
 from .models import BlogDB
 from .models import UserEmail
+from .models import SponsorDB
 
 from codersblog.utils import add_prefix
 
@@ -92,8 +93,15 @@ class BlogDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # print(context.object.id)
         # print(context.object.tag)
+        print(context['object'].keywords[0])
         print(context['object'].keywords)
-        # context['features_blog'] = BlogDB.objects.filter(key)
+        if len(context['object'].keywords) >= 2:
+            context['features_blog'] = BlogDB.objects.filter(
+                keywords__icontains=context['object'].keywords[0]).filter(keywords__icontains=context['object'].keywords[1]).order_by('-date')
+        else:
+            context['features_blog'] = BlogDB.objects.filter(
+                keywords__icontains=context['object'].keywords[0]).order_by('-date')
+        # print(context['features_blog'])
         return context
 
 
@@ -124,4 +132,9 @@ def UserAdded(request):
 
 
 def sponsors(request):
-    return render(request, 'blog/sponsors.html')
+    data = SponsorDB.objects.all()
+
+    context = {
+        'sponsors_data': data,
+    }
+    return render(request, 'blog/sponsors.html', context=context)

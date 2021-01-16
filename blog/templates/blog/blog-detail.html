@@ -4,7 +4,7 @@
 {% block blog_detail_page %}
 <div class="mt-2"></div>
 <div class="row">
-    <div class="col-md-8 col-sm-10">
+    <div class="col-md-9">
         <h1>{{ object.title }}</h2>
             <article>
                 <address>
@@ -15,12 +15,16 @@
             <hr>
             <p>{{ object.body | safe }}</p>
     </div>
-    <div class="col-md-4 col-sm-6">
+    <div class="col-md-3">
         <h2>Feature Blogs</h2>
         <!-- Post top 5 blogs related to this Blog -->
         <ul class="list-unstyled">
-            {% for i in '12345678'|make_list %}
-            <li><a href="#" class="text-decoration-none">Blog-{{ forloop.counter }}</a></li>
+            {% for data in features_blog %}
+            <li>
+                <a href="/%2F{{ data.slug }}/" class="text-decoration-none">
+                    {{ data.title }}
+                </a>
+            </li>
             {% endfor %}
         </ul>
     </div>
