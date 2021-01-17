@@ -73,7 +73,7 @@
         </div>
 
         <ul class="navbar-nav flex-row ml-md-auto d-md-flex zoom">
-            <form class="form-inline my-2 my-lg-0" method="GET" action="search">
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
                 <input type="search" class="form-control" id="search-input" placeholder="Search Blog..."
                     aria-label="Search for..." autocomplete="off" name="query" />
             </form>

@@ -15,7 +15,6 @@ from codersblog.utils import add_prefix
 
 
 def index(request):
-    print("call index ------- ")
     # current_url = resolve(request.path_info).url_name
     # test_data = PythonDB.objects.values_list('title')
     # print(test_data)
@@ -36,7 +35,6 @@ def index(request):
 
 
 def tutorial(request, slug=None):
-    print("call tutorial ---------------- ")
     # data = PythonDB.objects.get(pk=pk)
     data = get_object_or_404(PythonDB, slug=slug)
 
@@ -89,19 +87,15 @@ class BlogDetailView(DetailView):
     paginate_by = 5
 
     def get_context_data(self, **kwargs):
-        print('call blog-detail view')
         context = super().get_context_data(**kwargs)
-        # print(context.object.id)
-        # print(context.object.tag)
-        print(context['object'].keywords[0])
-        print(context['object'].keywords)
+
+        # context['object'].keywords return the list of keywords
         if len(context['object'].keywords) >= 2:
             context['features_blog'] = BlogDB.objects.filter(
                 keywords__icontains=context['object'].keywords[0]).filter(keywords__icontains=context['object'].keywords[1]).order_by('-date')
         else:
             context['features_blog'] = BlogDB.objects.filter(
                 keywords__icontains=context['object'].keywords[0]).order_by('-date')
-        # print(context['features_blog'])
         return context
 
 
@@ -120,12 +114,10 @@ def search(request):
 
 
 def Editor(request):
-    print('call editor ---------------')
     return render(request, 'blog/editor.html')
 
 
 def UserAdded(request):
-    print('call useradd --------')
     if request.method == 'POST':
         UserEmail(email=request.POST['useremail']).save()
     return redirect('/')
