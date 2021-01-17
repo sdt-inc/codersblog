@@ -91,10 +91,10 @@ class BlogDetailView(DetailView):
 
         # context['object'].keywords return the list of keywords
         if len(context['object'].keywords) >= 2:
-            context['features_blog'] = BlogDB.objects.filter(
+            context['related_blog'] = BlogDB.objects.filter(
                 keywords__icontains=context['object'].keywords[0]).filter(keywords__icontains=context['object'].keywords[1]).order_by('-date')
         else:
-            context['features_blog'] = BlogDB.objects.filter(
+            context['related_blog'] = BlogDB.objects.filter(
                 keywords__icontains=context['object'].keywords[0]).order_by('-date')
         return context
 
@@ -130,3 +130,8 @@ def sponsors(request):
         'sponsors_data': data,
     }
     return render(request, 'blog/sponsors.html', context=context)
+
+
+def project(request):
+    context = {}
+    return render(request, 'blog/project.html', context=context)

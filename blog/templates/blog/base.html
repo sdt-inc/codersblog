@@ -67,7 +67,7 @@
                     </div>
                 </li>
                 <li class="nav-item zoom">
-                    <a class="nav-link font-weight-bold" href="#" target="_blank">Projects</a>
+                    <a class="nav-link font-weight-bold" href="{% url 'project' %}" target="">Projects</a>
                 </li>
             </ul>
         </div>
@@ -104,6 +104,7 @@
 
         {% block index_page %}
         {% endblock index_page %}
+
 
         <div class="row">
             <!-- side nav table of contents -->
@@ -171,9 +172,9 @@
                     {% endblock content %}
                     <div class="col-sm-2 mx-auto"></div>
                 </div>
-
                 {% else %}
                 {% block blog_detail_page %}
+
                 {% endblock blog_detail_page %}
                 {% endif %}
 
