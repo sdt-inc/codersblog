@@ -215,3 +215,12 @@ CKEDITOR_CONFIGS = {
 # CKEDITOR_IMAGE_BACKEND = 'pillow'
 # CKEDITOR_FORCE_JPEG_COMPRESSION = True
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+
+
+# send mail configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'example@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = ""
