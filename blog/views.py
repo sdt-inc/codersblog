@@ -44,9 +44,9 @@ def tutorial(request, slug=None):
     # return all the title from PythonDB database
     # flat true return the results as single values, rather than one-tuples.
     titles = list(PythonDB.objects.values_list(
-        'title', flat=True).order_by('-date'))
+        'title', flat=True).order_by('-date').reverse())
     slug_text = list(PythonDB.objects.values_list(
-        'slug', flat=True).order_by('-date'))
+        'slug', flat=True).order_by('-date').reverse())
 
     titles = add_prefix(titles, 'Python')
     title_slug_text = dict(zip(titles, slug_text))
