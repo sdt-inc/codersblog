@@ -13,7 +13,7 @@ from codersblog.utils import unique_slug_generator
 class PythonDB(models.Model):
     # all are <meta name='property' value>
     description = models.CharField(max_length=200)
-    keywords = MultiSelectField(choices=keyword_choices, max_choices=3)
+    keywords = MultiSelectField(choices=keyword_choices, max_choices=3,default='python')
     author = models.CharField(
         max_length=50, default='http://sdt-inc.github.io/')
 
@@ -22,7 +22,7 @@ class PythonDB(models.Model):
     slug = models.SlugField(max_length=200, null=True, blank=True)
 
     writer_name = MultiSelectField(
-        choices=writer_choices, max_choices=3)
+        choices=writer_choices, max_choices=3,default='mahin')
 
     date = models.DateField(auto_now=timezone.now())
     # body = RichTextField(config_name='special' blank=True, null=True)
@@ -46,10 +46,9 @@ class BlogDB(models.Model):
     # blog content
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, null=True, blank=True, unique=True)
-    tag = MultiSelectField(choices=keyword_choices, max_choices=3)
+    tag = MultiSelectField(choices=keyword_choices, max_choices=3,default='python')
 
-    writer_name = MultiSelectField(
-        choices=writer_choices, max_choices=1)
+    writer_name = MultiSelectField(choices=writer_choices, max_choices=3)
 
     date = models.DateField(auto_now=timezone.now())
     # body = RichTextField(config_name='special' blank=True, null=True)

@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',  # new for ckeditor snippets features and others
     'multiselectfield',
+    'services',
+    'rest_framework',
 ]
 
 SIDE_ID = 1

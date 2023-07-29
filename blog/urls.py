@@ -1,5 +1,5 @@
 from django.urls import include, path, re_path
-from django.conf.urls import url
+# from django.conf.urls import url
 
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
@@ -15,7 +15,7 @@ info_dict = {
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('/<slug:slug>/', views.BlogDetailView.as_view(), name='blog-detail'),
+    path('<slug:slug>/', views.BlogDetailView.as_view(), name='blog-detail'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('python/<slug:slug>/', views.tutorial, name='tutorial'),
     path('bloglist/', views.BlogListView.as_view(), name='blog_list'),
